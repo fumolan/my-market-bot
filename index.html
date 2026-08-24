@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股市六法简报 · 每日盘面×六法推演</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  :root {
+    --bg:#f5f6f8; --card:#fff; --text:#1a1a2e; --text2:#666;
+    --accent:#c0392b; --accent-light:#fdf0ee; --border:#e8e8e8;
+    --shadow:0 1px 3px rgba(0,0,0,.06); --radius:8px; --sidebar-w:280px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
+  .topbar{background:var(--card);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20;box-shadow:var(--shadow)}
+  .brand{font-size:18px;font-weight:700}
+  .brand small{font-weight:400;font-size:13px;color:var(--text2);margin-left:8px}
+  .rss-btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;text-decoration:none;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:600;transition:.2s}
+  .rss-btn:hover{opacity:.88}
+  .app-body{display:flex;min-height:calc(100vh - 53px)}
+  .sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--card);border-right:1px solid var(--border);overflow-y:auto;padding:12px 0;position:sticky;top:53px;max-height:calc(100vh - 53px)}
+  .cat-header{padding:10px 20px 6px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+  .cat-header .badge{font-size:11px;background:var(--accent-light);color:var(--accent);padding:1px 8px;border-radius:10px;font-weight:400}
+  .month-group{margin-bottom:4px}
+  .month-toggle{display:flex;align-items:center;gap:4px;padding:6px 20px;font-size:12px;color:var(--text2);cursor:pointer;user-select:none;border:none;background:none;width:100%;text-align:left}
+  .item-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:7px 20px 7px 30px;border:none;background:none;text-align:left;cursor:pointer;font-size:13px;color:var(--text);transition:.15s}
+  .item-btn:hover{background:var(--accent-light)}
+  .item-btn.active{background:var(--accent-light);color:var(--accent);font-weight:600;border-right:2px solid var(--accent)}
+  .main{flex:1;padding:24px;max-width:980px;margin:0 auto;width:100%}
+  .doc-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-size:13px;color:var(--text2)}
+  .doc-meta .date-badge{background:var(--accent);color:#fff;padding:3px 12px;border-radius:12px;font-weight:600}
+  .doc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px 40px;min-height:60vh}
+  .doc-card h1{font-size:22px;margin-bottom:16px;border-bottom:2px solid var(--accent-light);padding-bottom:12px}
+  .doc-card h2{font-size:17px;margin:22px 0 10px;color:var(--accent)}
+  .doc-card h3{font-size:15px;margin:16px 0 8px}
+  .doc-card p{margin:8px 0;line-height:1.75;font-size:14px}
+  .doc-card li{margin:6px 0 6px 20px;line-height:1.7;font-size:14px}
+  .doc-card table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13px}
+  .doc-card th,.doc-card td{border:1px solid var(--border);padding:7px 10px;text-align:left}
+  .doc-card th{background:var(--bg)}
+  .doc-card blockquote{border-left:3px solid var(--accent);background:var(--accent-light);padding:10px 14px;margin:10px 0;border-radius:0 6px 6px 0;color:var(--text2);font-size:13px}
+  .doc-card strong{color:var(--accent)}
+  .doc-card hr{border:none;border-top:1px dashed var(--border);margin:18px 0}
+  .empty{display:flex;align-items:center;justify-content:center;height:50vh;color:var(--text2);font-size:14px}
+  .footer{text-align:center;padding:20px;font-size:12px;color:#999}
+  @media(max-width:768px){
+    .sidebar{display:none}
+    .doc-card{padding:20px}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">📊 股市六法简报<small>每日盘面 × 六法推演</small></div>
+  <a class="rss-btn" href="rss.xml" title="RSS 订阅">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93z"/></svg>
+    RSS 订阅
+  </a>
+</div>
+<div class="app-body">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main">
+    <div class="doc-meta" id="docMeta" style="display:none">
+      <span class="date-badge" id="docDate"></span>
+      <span id="docSrc">同花顺扶摇API · 腾讯 · 新浪 · 财联社</span>
+    </div>
+    <div class="doc-card"><div class="empty" id="loading">加载中…</div><div id="content" style="display:none"></div></div>
+    <div class="footer">数据仅供参考，不构成投资建议 · AI Agent 自动生成 · <a href="rss.xml" style="color:var(--accent)">RSS</a></div>
+  </main>
+</div>
+<script>
+const state = {items:[], current:null};
+async function boot(){
+  try{
+    const r = await fetch('reports.json');
+    const idx = await r.json();
+    const cat = idx.categories[0];
+    document.getElementById('loading').textContent = '暂无简报';
+    if(!cat){return}
+    // sidebar
+    const sb = document.getElementById('sidebar');
+    let html = `<div class="cat-header">📊 ${cat.name}<span class="badge">${cat.total} 篇</span></div>`;
+    cat.months.forEach(m=>{
+      html += `<div class="month-group"><button class="month-toggle">▾ ${m.label}</button>`;
+      m.items.forEach(it=>{
+        html += `<button class="item-btn" data-path="${it.path}" data-date="${it.date}"><span>${it.label}</span></button>`;
+      });
+      html += `</div>`;
+    });
+    sb.innerHTML = html;
+    state.items = cat.months.flatMap(m=>m.items);
+    sb.querySelectorAll('.item-btn').forEach(btn=>{
+      btn.onclick = ()=>loadDoc(btn.dataset.path, btn.dataset.date, btn);
+    });
+    // 默认加载最新
+    if(state.items.length){
+      const first = sb.querySelector('.item-btn');
+      loadDoc(state.items[0].path, state.items[0].date, first);
+    }
+  }catch(e){
+    document.getElementById('loading').textContent = '加载失败: '+e.message;
+  }
+}
+async function loadDoc(path, date, btn){
+  document.querySelectorAll('.item-btn').forEach(b=>b.classList.remove('active'));
+  btn && btn.classList.add('active');
+  try{
+    const r = await fetch(path);
+    const md = await r.text();
+    document.getElementById('content').innerHTML = marked.parse(md);
+    document.getElementById('content').style.display='';
+    document.getElementById('loading').style.display='none';
+    document.getElementById('docMeta').style.display='flex';
+    document.getElementById('docDate').textContent = date;
+    document.title = `股市六法简报 · ${date}`;
+  }catch(e){
+    document.getElementById('loading').textContent = '加载失败: '+e.message;
+  }
+}
+boot();
+</script>
+</body>
+</html>
