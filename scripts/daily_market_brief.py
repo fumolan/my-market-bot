@@ -22,7 +22,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KEY_FILE = os.path.expanduser("~/claude/apikey/tonghuashun.txt")
 FUYAO_BASE = "https://fuyao.aicubes.cn"
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
-SITE = "https://fumolan.github.io/my-bot"
+SITE = "https://fumolan.github.io/my-market-bot"
 
 SOURCES_OK, SOURCES_FAIL = [], []
 

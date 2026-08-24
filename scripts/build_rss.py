@@ -14,7 +14,7 @@ from datetime import datetime, timezone, timedelta
 from email.utils import format_datetime
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = "https://fumolan.github.io/my-bot"
+SITE = "https://fumolan.github.io/my-market-bot"
 CST = timezone(timedelta(hours=8))  # Asia/Shanghai
 
 CAT_META = {
@@ -67,7 +67,7 @@ def build_channel(slug, name, items, out_file):
     xml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{esc('跑的快哥哥 · ' + name)}</title>
+    <title>{esc('📊 ' + name + ' · 股市六法简报')}</title>
     <link>{SITE}/</link>
     <atom:link href="{SITE}/{'rss/' + slug + '.xml' if slug != '_all' else 'rss.xml'}" rel="self" type="application/rss+xml"/>
     <description>{esc(name + ' — AI Agent 自动生成')}</description>
