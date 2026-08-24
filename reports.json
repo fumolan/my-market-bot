@@ -1,17 +1,23 @@
 {
-  "updated": "2026-08-24T22:59:23.247817",
+  "updated": "2026-08-25T07:30:02.659020",
   "categories": [
     {
       "slug": "market",
       "name": "股市六法简报",
       "icon": "📊",
-      "total": 1,
-      "latest_date": "2026-08-24",
+      "total": 2,
+      "latest_date": "2026-08-25",
       "months": [
         {
           "key": "2026-08",
           "label": "2026年08月",
           "items": [
+            {
+              "name": "2026-08-25.md",
+              "path": "reports/market/2026-08-25.md",
+              "date": "2026-08-25",
+              "label": "2026-08-25"
+            },
             {
               "name": "2026-08-24.md",
               "path": "reports/market/2026-08-24.md",
