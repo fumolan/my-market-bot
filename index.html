@@ -75,21 +75,24 @@ async function boot(){
   try{
     const r = await fetch('reports.json');
     const idx = await r.json();
-    const cat = idx.categories[0];
+    const cats = idx.categories || [];
     document.getElementById('loading').textContent = '暂无简报';
-    if(!cat){return}
-    // sidebar
+    if(!cats.length){return}
+    // sidebar — 渲染全部分类
     const sb = document.getElementById('sidebar');
-    let html = `<div class="cat-header">📊 ${cat.name}<span class="badge">${cat.total} 篇</span></div>`;
-    cat.months.forEach(m=>{
-      html += `<div class="month-group"><button class="month-toggle">▾ ${m.label}</button>`;
-      m.items.forEach(it=>{
-        html += `<button class="item-btn" data-path="${it.path}" data-date="${it.date}"><span>${it.label}</span></button>`;
+    let html = '';
+    cats.forEach(cat=>{
+      html += `<div class="cat-header">${cat.icon||'📄'} ${cat.name}<span class="badge">${cat.total} 篇</span></div>`;
+      cat.months.forEach(m=>{
+        html += `<div class="month-group"><button class="month-toggle">▾ ${m.label}</button>`;
+        m.items.forEach(it=>{
+          html += `<button class="item-btn" data-path="${it.path}" data-date="${it.date}"><span>${it.label}</span></button>`;
+        });
+        html += `</div>`;
       });
-      html += `</div>`;
     });
     sb.innerHTML = html;
-    state.items = cat.months.flatMap(m=>m.items);
+    state.items = cats.flatMap(c=>c.months.flatMap(m=>m.items));
     sb.querySelectorAll('.item-btn').forEach(btn=>{
       btn.onclick = ()=>loadDoc(btn.dataset.path, btn.dataset.date, btn);
     });
@@ -113,7 +116,7 @@ async function loadDoc(path, date, btn){
     document.getElementById('loading').style.display='none';
     document.getElementById('docMeta').style.display='flex';
     document.getElementById('docDate').textContent = date;
-    document.title = `股市六法简报 · ${date}`;
+    document.title = `市场情报 · ${date}`;
   }catch(e){
     document.getElementById('loading').textContent = '加载失败: '+e.message;
   }
