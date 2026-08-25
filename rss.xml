@@ -6,7 +6,7 @@
     <atom:link href="https://fumolan.github.io/my-market-bot/rss.xml" rel="self" type="application/rss+xml"/>
     <description>全站情报聚合 — AI Agent 自动生成</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 25 Aug 2026 22:15:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 22:26:36 +0800</lastBuildDate>
     <generator>my-bot build_rss.py</generator>
     <item>
       <title>[股市六法简报] 2026-08-25</title>
@@ -14,6 +14,13 @@
       <guid isPermaLink="true">https://fumolan.github.io/my-market-bot/reports/market/2026-08-25.md</guid>
       <pubDate>Tue, 25 Aug 2026 08:00:00 +0800</pubDate>
       <description>生成时间：2026 08 25 07:30 数据源：同花顺扶摇API · 腾讯 · 新浪 · 财联社（自动降级） 涨跌比：16 涨 / 51 跌 🔺 涨幅前8： 贵金属 +3.18% 煤炭开采加工 +2.72% 保险 +1.80% 银行 +1.38% 种植业与林业 +1.33% 公路铁路运输 +0.91% 工业金属 +0.76% 电池 +0.65% 🔻 跌幅前8： 自动化设备 2.24% 军工电子 2.43% 医疗器械 2.44% 风电设备 2.51% 化学制药 2.88% 医疗服务 3.21% 元件 3.63% 生物制品 4.47% 🔺 最强：燃油 +2.46% ｜ PTA +1.34% ｜…</description>
+    </item>
+    <item>
+      <title>[UZI深度报告] 2026-08-25-中国银行601988</title>
+      <link>https://fumolan.github.io/my-market-bot/reports/uzi/2026-08-25-中国银行601988.md</link>
+      <guid isPermaLink="true">https://fumolan.github.io/my-market-bot/reports/uzi/2026-08-25-中国银行601988.md</guid>
+      <pubDate>Tue, 25 Aug 2026 08:00:00 +0800</pubDate>
+      <description>体检 61 分 · 观望偏多 ｜ 2 派看多 / 2 派看空 ｜ 41 位评委参与：5 强买 · 6 买入 · 6 观察 · 19 观望 · 5 回避 📋 首次覆盖结论： DCF 低估 54% · LBO IRR 22% — 双重信号看多 🛡️ 杀猪盘检测：🟡🟡 注意 ｜ 投票分布：看多 11 / 中性 25 / 回避 5 📊 打开完整交互报告（Bloomberg 风格 HTML） (2026 08 25 中国银行601988 完整报告.html) 与比亚迪的&quot;价值派独捧&quot;不同，中国银行出现了 技术派与深度价值派罕见同框 ：年内 +13% 的上行趋势让 Stage 2 动量党全员满分，PE 8…</description>
     </item>
     <item>
       <title>[UZI深度报告] 2026-08-25-比亚迪002594</title>
