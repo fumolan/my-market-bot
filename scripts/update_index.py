@@ -14,7 +14,6 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CAT_META = [
     {"slug": "market", "name": "股市六法简报", "icon": "📊"},
-    {"slug": "uzi", "name": "UZI深度报告", "icon": "🎭"},
 ]
 
 DATE_RE = re.compile(r"(20\d{2})[-_](\d{2})[-_](\d{2})")

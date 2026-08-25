@@ -19,7 +19,6 @@ CST = timezone(timedelta(hours=8))  # Asia/Shanghai
 
 CAT_META = {
     "market":        {"name": "股市六法简报",   "icon": "📊"},
-    "uzi":           {"name": "UZI深度报告",   "icon": "🎭"},
     "llm":           {"name": "大模型行业情报", "icon": "🤖"},
     "job-hunting":   {"name": "后端求职情报",   "icon": "🔍"},
     "interview-qa":  {"name": "每日面试题",     "icon": "📝"},
